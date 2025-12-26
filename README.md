@@ -97,7 +97,7 @@ SESSION_SECRET=CHANGE_THIS_SECRET
 ### 4️⃣ Chạy server
 
 ```bash
-node server.js
+npm start
 ```
 
 Truy cập:
