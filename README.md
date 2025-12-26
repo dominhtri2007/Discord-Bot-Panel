@@ -47,8 +47,6 @@ Phù hợp cho:
 
 ## 📁 Cấu trúc thư mục
 
-```
-
 ```discord-control-panel/
 ├─ server.js
 ├─ package.json
