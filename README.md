@@ -49,7 +49,7 @@ Phù hợp cho:
 
 ```
 
-discord-control-panel/
+```discord-control-panel/
 ├─ server.js
 ├─ package.json
 ├─ .env
