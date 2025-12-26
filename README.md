@@ -4,8 +4,6 @@
 
 # Discord Control Panel
 
-```md
-
 Một **bảng điều khiển quản trị Discord** cho phép admin quản lý server thông qua giao diện web.
 
 Dự án hỗ trợ:
