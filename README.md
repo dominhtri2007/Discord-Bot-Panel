@@ -165,4 +165,7 @@ MIT License
 ## 👤 Tác giả
 
 Developed by **tricoder_gojosama**
+
+---
+
 Discord Control Panel – 2025
