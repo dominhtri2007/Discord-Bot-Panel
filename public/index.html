@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Discord Control Panel</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="wrapperthuky">
+  <div class="cardthuky">
+    <h1 class="h1thuky">Gửi Tin</h1>
+    <label class="labelthuky">Channel ID:</label>
+    <input id="channelId" class="inputthuky">
+    <label class="labelthuky">Nội dung:</label>
+    <textarea id="msg" class="textareathuky"></textarea>
+    <div class="previewthuky">
+      <h4 class="h4thuky">Xem trước:</h4>
+      <div id="msgPreview" class="previewcontentthuky"></div>
+      <div id="msgImagePreview" class="previewimagesthuky"></div>
+    </div>
+    <label class="labelthuky">File:</label>
+    <input type="file" id="fileInput" multiple>
+    <button id="sendBtn" class="buttonthuky">Gửi</button>
+    <div id="status" class="statusthuky"></div>
+  </div>
+  <div class="cardthuky">
+    <h1 class="h1thuky">Sửa Tin</h1>
+    <label class="labelthuky">Channel ID:</label>
+    <input id="editChannelId" class="inputthuky">
+    <label class="labelthuky">Message ID:</label>
+    <input id="editMessageId" class="inputthuky">
+    <label class="labelthuky">Nội dung mới:</label>
+    <textarea id="editContent" class="textareathuky"></textarea>
+    <div class="previewthuky">
+      <h4 class="h4thuky">Xem trước:</h4>
+      <div id="editPreview" class="previewcontentthuky"></div>
+    </div>
+    <button id="editBtn" class="buttonthuky">Sửa</button>
+    <div id="editStatus" class="statusthuky"></div>
+  </div>
+  <div class="cardthuky">
+    <h1 class="h1thuky">Đăng Bài Forum</h1>
+    <label class="labelthuky">Channel ID:</label>
+    <input id="forumChannelId" class="inputthuky">
+    <label class="labelthuky">Tiêu đề:</label>
+    <input id="forumTitle" class="inputthuky">
+    <label class="labelthuky">Nội dung:</label>
+    <textarea id="forumContent" class="textareathuky"></textarea>
+    <div class="previewthuky">
+      <h4 class="h4thuky">Xem trước:</h4>
+      <div id="forumPreview" class="previewcontentthuky"></div>
+      <div id="forumImagePreview" class="previewimagesthuky"></div>
+    </div>
+    <label class="labelthuky">Ảnh:</label>
+    <input type="file" id="forumImage" multiple>
+    <button id="forumBtn" class="buttonthuky">Đăng bài</button>
+    <div id="forumStatus" class="statusthuky"></div>
+  </div>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
