@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 2007;
 const CHANNEL_ID = process.env.CHANNEL_ID;
 const USER_TOKEN = process.env.USER_TOKEN;
-const MAX_USES = 10;
+const MAX_USES = 5;
 app.set("trust proxy", true);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
