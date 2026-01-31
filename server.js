@@ -3,30 +3,16 @@ const express = require("express");
 const fs = require("fs");
 const axios = require("axios");
 const bodyParser = require("body-parser");
-
 const app = express();
 const PORT = process.env.PORT || 2007;
 const CHANNEL_ID = process.env.CHANNEL_ID;
 const USER_TOKEN = process.env.USER_TOKEN;
 const MAX_USES = 10;
-
-// ==================
-// TRUST PROXY (VPS)
-// ==================
 app.set("trust proxy", true);
-
-// ==================
-// BODY PARSER
-// ==================
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// ==================
-// LOAD WHITELIST IP
-// ==================
 const WHITELIST_FILE = "ip.txt";
 let whitelist = [];
-
 function loadWhitelist() {
     try {
         whitelist = fs
@@ -36,15 +22,11 @@ function loadWhitelist() {
             .filter(Boolean);
         console.log("Whitelist IP:", whitelist);
     } catch (err) {
-        console.error("Không đọc được ip.txt");
+        console.error("lỗi ip.txt");
         whitelist = [];
     }
 }
 loadWhitelist();
-
-// ==================
-// WHITELIST MIDDLEWARE
-// ==================
 app.use((req, res, next) => {
     const ip =
         req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
@@ -57,18 +39,9 @@ app.use((req, res, next) => {
     }
     next();
 });
-
-// ==================
-// STATIC FILE
-// ==================
 app.use(express.static("public"));
-
-// ==================
-// LOAD ID USAGE (SAFE)
-// ==================
 const USAGE_FILE = "id_usage.json";
 let idUsage = {};
-
 function loadUsage() {
     try {
         if (fs.existsSync(USAGE_FILE)) {
@@ -83,23 +56,15 @@ function loadUsage() {
     }
 }
 loadUsage();
-
 function saveUsage() {
     fs.writeFileSync(USAGE_FILE, JSON.stringify(idUsage, null, 2));
 }
-
-// ==================
-// SUBMIT API
-// ==================
 app.post("/submit", async (req, res) => {
     console.log("BODY:", req.body);
-
     const { id } = req.body;
-
     if (!id || !/^\d+$/.test(id)) {
         return res.json({ message: "ID không hợp lệ" });
     }
-
     if (!idUsage[id]) idUsage[id] = 0;
 
     if (idUsage[id] >= MAX_USES) {
@@ -107,7 +72,6 @@ app.post("/submit", async (req, res) => {
             message: `ID ${id} đã hết lượt sử dụng`
         });
     }
-
     try {
         await axios.post(
             `https://discord.com/api/v9/channels/${CHANNEL_ID}/messages`,
@@ -119,10 +83,8 @@ app.post("/submit", async (req, res) => {
                 }
             }
         );
-
         idUsage[id]++;
         saveUsage();
-
         res.json({
             message: `Đã gửi ID ${id}. Còn ${MAX_USES - idUsage[id]} lượt`
         });
@@ -131,10 +93,6 @@ app.post("/submit", async (req, res) => {
         res.json({ message: "Lỗi gửi Discord" });
     }
 });
-
-// ==================
-// START SERVER
-// ==================
 app.listen(PORT, () => {
     console.log(`Server chạy tại http://localhost:${PORT}`);
 });
