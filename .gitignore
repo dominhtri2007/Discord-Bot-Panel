@@ -1,14 +1,7 @@
-# Node.js
 node_modules/
-
-# Env
 .env
-
-# Logs
+.env.*
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# OS
+yarn.lock
+pnpm-lock.yaml
 .DS_Store
-Thumbs.db
