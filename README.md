@@ -164,7 +164,7 @@ MIT License
 
 ## 👤 Tác giả
 
-Developed by **tricoder_gojosama**
+Developed by **tricoder**
 
 ---
 
